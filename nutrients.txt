@@ -1,0 +1,80 @@
+Nutrientix
+cruglges
+T*q-4+,cE_
+
+Lookup : different
+
+during note collection we noted a few inaccuracies
+the daily value for different vitamins and minerals differed across different websites
+It is unclear if daily values for fat sugar carbs protein cholestorl etc.
+    are upper or lower bounds
+It is difficult to tell how these values change when trying to lose weight
+We're sampling from thousands of different foods
+    if the computer read in the values wrong, it will be difficult to verify
+We can't consider omega 3 fatty acids at the moment
+Multiple types of vitamin D were encountered
+
+This does not account for carcinogenic ingredients
+this does not account for complex carbs vs simple
+this does not account for different types of protein, sugar or fatty acids
+
+Does not account for added nutrients vs natural nutrients
+
+Nutritionix Api is used for getting information about individual foods
+https://www.nutritionix.com/business/api
+
+f = female
+all values are shown for males as default
+lact = breast feeding or lactating
+preg = obvious
+51+ or 71+ = age bounds
+mg milligram
+mcg microgram
+NE : no bound
+---------------------
+204 g Total Fat : 65g
+606 g Saturated Fatty Acids : 20g
+601 mg Cholesterol : 300 mg
+307 mg Sodium : 2400 mg
+306 mg K Potassium : 3500 mg
+205 g total Carbs : 300 g
+291 g Fiber : 25 g
+203 g Protein : 50 g
+269 Sugar
+
+320 mcg Vitamin A: 900 mcg, 3000mcg : 700mcg f
+417 mcg Folate: 400mcg, 1000mcg : 600mcg preg, 500mcg lact
+401 mg Vitamin C: 90mg, 2000mg: 75mg f, 85mg preg, 120mg lact
+328 mcg Vitamin D: 15mcg, 100 mcg : 20 mcg 71+,
+301 mg Calcium: 1000mg, 2500mg : 1200mg (f 51+), 2500mg to 50 years, 2000mg 51+ years
+303 mg Iron: 8mg, 45mg : 18mg (f 19 to 50 years) 8mg (f 51+ years), 27mg (preg), 9 mg (lact)
+
+323 mg different Vitamin E: 13 IU, 1100 IU : 11.7 mg, 990mg
+430 mcg Vitamin K: 120 mcg, nil: 90 mcg (f)
+404 mg Thiamin: 1.2 mg, NE: 1.1mg (f), 1.4mg (preg and lact)
+405 mg Riboflavin: 1.3 mg, NE : 1.1 mg (f), 1.4 mg (preg), 1.6 mg (lact)
+406 mg Niacin: 16 mg, 35 mg : 14 mg (f), 18 mg (preg), 17 mg (lact)
+415 mg Vitamin B6: 1.3 mg, 100 mg : 1.7mg (m 51+), 1.3 mg (f 19 to 50), 1.5 mg (f 51+ years)
+    1.9 mg (preg), 2 mg (lact)
+
+418 578 (added) mcg Vitamin B-12: 2.4 mcg, NE : 2.6 mcg (preg), 2.8 mcg (lact)
+410 mg Pantothenic Acid: 5 mg, NE : 6 mg (preg), 7 mg (lact)
+not found Biotin : 30 mcg, NE : 35 mcg (lact)
+421 mg Choline : 550 mg, 3.5 g : 425 mg (f), 450 mg (preg), 550 mg (lact)
+not found  Chromium: 35 mcg, NE : 25 mcg (f), 30 mcg ( m 50+), 20 mcg (f 50+), 30 mcg (preg), 45 mcg (lact)
+312 mg Copper: 900 mcg, 10,000 mcg : 1000 mcg (preg), 1300mcg (lact)
+
+not found Flouride: 4mg, 10mg : 3 mg (f)
+not found Iodine: 150 mcg, 1100 mcg : 220 mcg (preg), 290 mcg (lact)
+304 mg Magnesium : 400 mg, 350 mg
+    420 mg (m 30+), 310 mg (f) 350 mg (preg 19-30), 310mg (lact 19-30),
+    320 mg (f 30+)
+    360 mg (preg 30+)
+    320 mg (lact 30+)
+315 mg Manganese: 2.3 mg (m), 11 mg: 1.8 mg (f), 2 mg (preg), 2.6 mg (lact)
+not found Molybdenum : 40 mcg, 2000 mcg : 50 mcg (preg and lact)
+305 mg Phosphorus: 700 mg, 4 g (19 -70), 3g (70+)
+
+306 mg Potassium: 4.7 g, NE : 5.1 g (lact)
+317 mcg Selenium: 55 mcg, 400 mcg : 60 mcg (preg), 70 mcg (lact)
+309 mg Zinc : 11 mg (m), 40 mg : 8 mg (f), 11 mg (preg), 12 mg (lact)
