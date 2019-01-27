@@ -15,3 +15,4 @@ https://gist.github.com/mattsilv/9dfb709e7609537ffd3b1b8c097e9bfb
 https://trackapi.nutritionix.com/docs/#/default/post_v2_natural_nutrients
 https://gist.github.com/mattsilv/95f94dd1378d4747fb68ebb2d042a4a6
 http://docs.python-requests.org/en/master/user/quickstart/
+https://www.healthline.com/nutrition/how-much-sugar-per-day
