@@ -1,0 +1,17 @@
+https://www.consumerlab.com/RDAs/
+https://www.wellnessdaily.com.au/health/7-essential-nutrients-your-body-needs
+
+https://www.healthline.com/health/food-nutrition/six-essential-nutrients
+https://health.gov/dietaryguidelines/dga2000/document/choose.htm
+https://www.medicalnewstoday.com/articles/319991.php
+
+Heterocyclic amines
+tmaos
+
+https://github.com/nutritionix/nutrition-label
+https://docs.google.com/document/d/1_q-K-ObMTZvO0qUEAxROrN3bwMujwAN25sLHwJzliK0/edit
+https://gist.github.com/mattsilv/9dfb709e7609537ffd3b1b8c097e9bfb
+
+https://trackapi.nutritionix.com/docs/#/default/post_v2_natural_nutrients
+https://gist.github.com/mattsilv/95f94dd1378d4747fb68ebb2d042a4a6
+http://docs.python-requests.org/en/master/user/quickstart/
