@@ -16,3 +16,12 @@ https://trackapi.nutritionix.com/docs/#/default/post_v2_natural_nutrients
 https://gist.github.com/mattsilv/95f94dd1378d4747fb68ebb2d042a4a6
 http://docs.python-requests.org/en/master/user/quickstart/
 https://www.healthline.com/nutrition/how-much-sugar-per-day
+
+
+
+https://www.minuterice.com/products/nutritional_analysis.aspx
+https://nutritiondata.self.com/facts/vegetables-and-vegetable-products/2356/2
+https://nutritiondata.self.com/facts/fruits-and-fruit-juices/1846/2
+https://www.amazon.com/Almond-Almondmilk-Unsweetened-Vanilla-32-Ounce/dp/B002H062DA?th=1
+
+https://cvxopt.org/examples/tutorial/lp.html
