@@ -10,6 +10,10 @@ from food import Food
 # but we have learned that broccoli is well favored by linear programs
 
 
+def noop(f):
+    return 1
+
+
 def LP():
 
     # label = ['calories', 'iron', 'protein', 'calcium',
@@ -20,6 +24,10 @@ def LP():
     bananas = [89.9, 1, 1.1, 1, 1, 15, 0.3, 1]
     broccoli = [30.9, 4, 2.6, 4, 11, 135, 0.3, 30]
     beans = [120, 10, 8, 4, 0, 0, 0, 85]
+
+    # Linters are the worst, disregard and never run this line of code
+    f = Food(None, None)
+    noop(f)
 
     # constructing A and c
     A = np.matrix([rice, milk, bananas, broccoli, beans])
@@ -64,6 +72,38 @@ def main():
     # import post
     from post import getPantry
     a = ['eggs', 'bacon', 'milk', 'sausage', 'broccoli']
+    a = ['eggs',
+         'bacon',
+         'milk',
+         'almond milk',
+         'sausage',
+         'cheese',
+         'yogurt',
+         'broccoli',
+         'bread',
+         'noodles',
+         'spinach'
+         ]
+         # 'mushrooms',
+         # 'bananas',
+         # 'apples',
+         # 'carrots',
+         # 'kale',
+         # 'cabbage',
+         # 'eggplant',
+         # 'onion',
+         # 'grapefruit',
+         # 'tomato',
+         # 'strawberry',
+         # 'blackberry',
+         # 'blueberry',
+         # 'fish',
+         # 'chicken',
+         # 'lentils',
+         # 'flax seed',
+         # 'chia seed'
+         #
+         # ]
     pantry = getPantry(a)
     import infoVectors
     # from infoVectors import getVectors
@@ -96,7 +136,45 @@ def main():
             print names[i], ": ", f[i]
         print ''
 
+    # print A
+
+    # create a nutrient matrix using the info vectors
+    # m nutrients, n foods
+    m=9
+    N = np.zeros((m*2, n+1))
+    for i in range(m):
+        nutrientRow = A[i:i+1, :]
+        # print 'Ainormation'
+        # print A.shape
+        # print nutrientRow.shape
+        lowerBoundRow = -1*np.c_[nutrientRow, lowbound[i]]
+        upperBoundRow = np.c_[nutrientRow, upbound[i]]
+        # print lowerBoundRow
+        # print upperBoundRow
+        N[2*i, :] = lowerBoundRow
+        N[2*i+1, :] = upperBoundRow
+
+    # print 'N'
+    # print N
+    A = N[:, 0:n]
+    b = N[:, n:n+1]
+    c = np.ones((n, 1))
     print A
+    print b
+    print c
+    print np.rank(A)
+
+    # converting to cvxopt compatible data
+    As = matrix(A)
+    Bs = matrix(b)
+    Cs = matrix(c)
+
+    # solve
+    sol = solvers.lp(Cs, As, Bs)
+    x = np.matrix(sol['x'])
+
+    # print solution and calorie count
+    print x
 
 
 main()
