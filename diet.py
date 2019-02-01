@@ -3,6 +3,8 @@ from cvxopt import solvers, matrix
 import numpy as np
 from food import Food
 
+GLOBAL_DEBUG = False
+
 # here I use linear programming to construct a diet that satisfies many
 # nutritional
 # requirements and minimizes the amount of calories consumed
@@ -82,28 +84,42 @@ def main():
          'broccoli',
          'bread',
          'noodles',
-         'spinach'
+         'spinach',
+         'mushrooms',
+         'bananas',
+         'apples',
+         'carrots',
+         'kale',
+         'cabbage',
+         'eggplant',
+         'onion',
+         'grapefruit',
+         'tomato',
+         'strawberry',
+         'blackberry',
+         'blueberry',
+         'fish',
+         'chicken',
+         'lentils',
+         'flax seed',
+         'chia seed',
+         'yogurt',
+         'lemonade',
+         'applesauce',
+         'steak',
+         'beef',
+         'peanuts',
+         'sunflower seed',
+         'almond',
+         'sardine',
+         'tofu',
+         'kale',
+         'navy bean',
+         'sesame',
+         'okra',
+         'rubarb',
+         'orange'
          ]
-         # 'mushrooms',
-         # 'bananas',
-         # 'apples',
-         # 'carrots',
-         # 'kale',
-         # 'cabbage',
-         # 'eggplant',
-         # 'onion',
-         # 'grapefruit',
-         # 'tomato',
-         # 'strawberry',
-         # 'blackberry',
-         # 'blueberry',
-         # 'fish',
-         # 'chicken',
-         # 'lentils',
-         # 'flax seed',
-         # 'chia seed'
-         #
-         # ]
     pantry = getPantry(a)
     import infoVectors
     # from infoVectors import getVectors
@@ -131,17 +147,17 @@ def main():
         # print f.shape
 
         A[:, j:j+1] = f
-        print food.getName()
-        for i in range(m):
-            print names[i], ": ", f[i]
-        print ''
+        # print food.getName()
+        # for i in range(m):
+        #     print names[i], ": ", f[i]
+        # print ''
 
     # print A
 
     # create a nutrient matrix using the info vectors
     # m nutrients, n foods
-    m=9
-    N = np.zeros((m*2, n+1))
+    m = 15
+    N = np.zeros((m*2, n+1))  # needs to be m*2
     for i in range(m):
         nutrientRow = A[i:i+1, :]
         # print 'Ainormation'
@@ -152,17 +168,24 @@ def main():
         # print lowerBoundRow
         # print upperBoundRow
         N[2*i, :] = lowerBoundRow
-        N[2*i+1, :] = upperBoundRow
+        N[2*i+1, :] = upperBoundRow  # 2 * i + 1
+        # N[i, :] = upperBoundRow
 
     # print 'N'
     # print N
+    non_negative_food = -1*np.eye(n)
+    non_negative_values = np.zeros((n, 1))
     A = N[:, 0:n]
     b = N[:, n:n+1]
-    c = np.ones((n, 1))
-    print A
-    print b
-    print c
-    print np.rank(A)
+    c = np.ones((n, 1)) * -1
+    A = np.r_[A, non_negative_food]
+    b = np.r_[b, non_negative_values]
+    if GLOBAL_DEBUG:
+        print b
+        print c
+        print A
+        print A.shape
+        print np.linalg.matrix_rank(A)
 
     # converting to cvxopt compatible data
     As = matrix(A)
@@ -174,7 +197,20 @@ def main():
     x = np.matrix(sol['x'])
 
     # print solution and calorie count
-    print x
+    num_foods, one = x.shape
+    for i in range(num_foods):
+        if x[i] < 10**-4:
+            continue
+        print 'food:', a[i], 'value:', x[i]
+    # m, n = A.shape
+    # c = np.ones((n, 1))
+    # for i in range(m):
+    #     x = A[i:i+1, :]
+    #     print 'x', x.shape
+    #     print 'c', c.shape
+    #     print np.dot(x, c)
+    # output = np.matrix(x)
+    # for i in range()
 
 
 main()
