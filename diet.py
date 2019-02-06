@@ -2,6 +2,9 @@
 from cvxopt import solvers, matrix
 import numpy as np
 from food import Food
+from post import getPantry
+from infoVectors import getUnbounded
+from infoVectors import getNutrNames
 
 GLOBAL_DEBUG = False
 
@@ -12,114 +15,77 @@ GLOBAL_DEBUG = False
 # but we have learned that broccoli is well favored by linear programs
 
 
-def noop(f):
-    return 1
+foods_list_global = [
+                     'grapefruit',
+                     'orange',
+                     'bananas',
+                     'apples',
+                     'tomato',
+                     'strawberry',
+                     'blackberry',
+                     'blueberry',
+                     'lemonade',
+                     'lemon',
+                     'lime',
+                     'applesauce',
+                     'bread',
+                     'noodles',
+
+                     'eggs',
+                     'bacon',
+                     'sausage',
+                     'fish',
+                     'chicken',
+                     'steak',
+                     'beef',
+                     'sardine',
+                     'beef liver',
+                     'liver',
+                     'salmon',
+
+                     'milk',
+                     'almond milk',
+                     'cheese',
+                     'yogurt',
+
+                     'broccoli',
+                     'spinach',
+                     'mushrooms',
+                     'carrots',
+                     'kale',
+                     'cabbage',
+                     'eggplant',
+                     'onion',
+                     'kale',
+                     'okra',
+                     'rubarb',
+                     'potato',
+
+                     'beet',
+                     'yam',
+                     'white potato',
+                     'soybean',
+                     'avocado',
+                     'sweet potato',
+                     'edamame',
 
 
-def LP():
-
-    # label = ['calories', 'iron', 'protein', 'calcium',
-    #         'vitamin A', 'vitamin C',
-    #         'fat', 'sodium']
-    rice = [210, 2, 5, 0, 0, 0, 3.5, 150]
-    milk = [30, 4, 1, 45, 10, 0, 2.5, 170]
-    bananas = [89.9, 1, 1.1, 1, 1, 15, 0.3, 1]
-    broccoli = [30.9, 4, 2.6, 4, 11, 135, 0.3, 30]
-    beans = [120, 10, 8, 4, 0, 0, 0, 85]
-
-    # Linters are the worst, disregard and never run this line of code
-    f = Food(None, None)
-    noop(f)
-
-    # constructing A and c
-    A = np.matrix([rice, milk, bananas, broccoli, beans])
-    A = A.T
-    c = np.matrix(A[0, :])
-    A = A[1:, :]
-
-    # constructing b
-    b = np.matrix([100, 61.2, 100, 100, 100, 77, 2300])
-    b = b.reshape(7, 1)
-
-    # converting inequality constraints to Ax <= b
-    X = np.c_[A, b]
-    X[0:5, :] *= -1
-
-    # enforcing non negative solution vector
-    nonzeros = -1*np.eye(5, 5)
-    z = np.zeros(5)
-    Z = np.c_[nonzeros, z]
-    X = np.r_[X, Z]
-
-    # separating A and b
-    m, n = X.shape
-    b = X[:, n-1]
-    A = X[:, :n-1]
-
-    # converting to cvxopt compatible data
-    As = matrix(A)
-    Bs = matrix(b)
-    Cs = matrix(c.T)
-
-    # solve
-    sol = solvers.lp(Cs, As, Bs)
-    x = np.matrix(sol['x'])
-
-    # print solution and calorie count
-    print x
-    print c*x
+                     'lentils',
+                     'flax seed',
+                     'chia seed',
+                     'peanuts',
+                     'sunflower seed',
+                     'almond',
+                     'tofu',
+                     'navy bean',
+                     'sesame'
+                     ]
 
 
 def main():
+    solvers.options['maxiters'] = 300
     # import post
-    from post import getPantry
-    a = ['eggs', 'bacon', 'milk', 'sausage', 'broccoli']
-    a = ['eggs',
-         'bacon',
-         'milk',
-         'almond milk',
-         'sausage',
-         'cheese',
-         'yogurt',
-         'broccoli',
-         'bread',
-         'noodles',
-         'spinach',
-         'mushrooms',
-         'bananas',
-         'apples',
-         'carrots',
-         'kale',
-         'cabbage',
-         'eggplant',
-         'onion',
-         'grapefruit',
-         'tomato',
-         'strawberry',
-         'blackberry',
-         'blueberry',
-         'fish',
-         'chicken',
-         'lentils',
-         'flax seed',
-         'chia seed',
-         'yogurt',
-         'lemonade',
-         'applesauce',
-         'steak',
-         'beef',
-         'peanuts',
-         'sunflower seed',
-         'almond',
-         'sardine',
-         'tofu',
-         'kale',
-         'navy bean',
-         'sesame',
-         'okra',
-         'rubarb',
-         'orange'
-         ]
+    a = foods_list_global
     pantry = getPantry(a)
     import infoVectors
     # from infoVectors import getVectors
@@ -156,7 +122,8 @@ def main():
 
     # create a nutrient matrix using the info vectors
     # m nutrients, n foods
-    m = 15
+
+    # m = 31
     N = np.zeros((m*2, n+1))  # needs to be m*2
     for i in range(m):
         nutrientRow = A[i:i+1, :]
@@ -178,6 +145,9 @@ def main():
     A = N[:, 0:n]
     b = N[:, n:n+1]
     c = np.ones((n, 1)) * -1
+    for j in range(14):
+        c[j, 0] = 100
+    print b
     A = np.r_[A, non_negative_food]
     b = np.r_[b, non_negative_values]
     if GLOBAL_DEBUG:

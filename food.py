@@ -14,3 +14,6 @@ class Food:
 
     def getName(self):
         return self.foodName
+
+    def getN(self):
+        return self.n
