@@ -13,17 +13,15 @@ def getPantry(foodInput):
 
     headers = {
         'Content-Type': 'application/json',
-        'x-app-id': '',
-        'x-app-key': ''
     }
 
     body = "{\"query\": \""
     for str in foodInput:
         body += str + ', '
     body += '\"}'
-    print body
+    # print body
     # body = "{\"query\": \"eggs, bacon, cheese, milk,\"}"
-    print body
+    # print body
 
     # executing the request
 
