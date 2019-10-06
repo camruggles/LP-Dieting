@@ -13,6 +13,8 @@ def getPantry(foodInput):
 
     headers = {
         'Content-Type': 'application/json',
+        'x-app-id': '7962ef8a',
+        'x-app-key': '2a3fdd11d1f548aaf05164ee920a5ae3'
     }
 
     body = "{\"query\": \""

@@ -6,8 +6,8 @@ class Food:
         self.n = nutrientdict
 
     def toString(self):
-        print self.foodName
-        print self.n
+        print(self.foodName)
+        print(self.n)
 
     def get(self, i):
         return self.n.get(i, 0)

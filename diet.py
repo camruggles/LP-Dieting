@@ -147,15 +147,15 @@ def main():
     c = np.ones((n, 1)) * -1
     for j in range(14):
         c[j, 0] = 100
-    print b
+    print(b)
     A = np.r_[A, non_negative_food]
     b = np.r_[b, non_negative_values]
     if GLOBAL_DEBUG:
-        print b
-        print c
-        print A
-        print A.shape
-        print np.linalg.matrix_rank(A)
+        print(b)
+        print(c)
+        print(A)
+        print(A.shape)
+        print(np.linalg.matrix_rank(A))
 
     # converting to cvxopt compatible data
     As = matrix(A)
@@ -171,7 +171,7 @@ def main():
     for i in range(num_foods):
         if x[i] < 10**-4:
             continue
-        print 'food:', a[i], 'value:', x[i]
+        print('food:', a[i], 'value:', x[i])
     # m, n = A.shape
     # c = np.ones((n, 1))
     # for i in range(m):

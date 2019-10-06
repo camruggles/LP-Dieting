@@ -98,11 +98,11 @@ def getVectors():
           304, 315, 305, 317, 309
           ]
 
-    lowerbounds = [1800, 0, 0, 0, 0, 3500, 0, 25, 50, 0,  # 6 should be
+    lowerbounds = [1800, 0, 0, 0, 0, 4700, 0, 25, 50, 0,  # 6 should be
                    # 4700 potassium
-                   900, 400, 90, 1000, 8, 0,   # should be 15 at 6 vitamin d
+                   900, 400, 90, 1000, 8, 15,   # should be 15 at 6 vitamin d
                    11.7, 120, 1.2, 1.3, 16, 1.3,
-                   2.4, 5, 400, 0.9,  # 3 should be 550 choline
+                   2.4, 5, 550, 0.9,  # 3 should be 550 choline
                    400, 2.3, 700, 55, 11
                    ]
 
